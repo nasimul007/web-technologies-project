@@ -1,0 +1,102 @@
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+<script src="jquery-3.3.1.js"></script>
+<script src="fabric.min.js"></script>
+
+<script>
+
+// Define the URL where your background image is located
+var imageUrl = "t_shirt.png";
+
+// Define 
+canvas.setBackgroundImage(imageUrl, canvas.renderAll.bind(canvas), {
+    // Optionally add an opacity lvl to the image
+    backgroundImageOpacity: 0.5,
+    // should the image be resized to fit the container?
+    backgroundImageStretch: false
+});
+</script>
+  </head>
+  <body>
+
+  <input type="file" id="imgLoader">
+    
+    <canvas id="c" width="600" height="600"></canvas>
+<script>
+/*//canvas = new fabric.Canvas('c');
+var canvas = new fabric.Canvas('c', {
+  backgroundColor: 'rgb(100,100,200)',
+  selectionColor: 'blue',
+  selectionLineWidth: 2
+  // ...
+});
+  var imgObj1 = new Image();
+        imgObj1.src = "t_shirt.png";
+        imgObj1.onload = function () {
+            // start fabricJS stuff
+            
+            var image = new fabric.Image(imgObj1);
+            image.set({
+                left: 250,
+                top: 250,
+                angle: 20,
+                padding: 10,
+                cornersize: 10,
+				selectable: false
+            });
+            //image.scale(getRandomNum(0.1, 0.25)).setCoords();
+            canvas.add(image);*/
+   
+   var canvas = new fabric.Canvas("c", {
+    hoverCursor: 'pointer',
+    selection: true,
+    selectionBorderColor: 'green',
+    backgroundColor: null
+});
+
+var imageUrl = "t_shirt.png";
+
+// Define 
+canvas.setBackgroundImage(imageUrl, canvas.renderAll.bind(canvas), {
+    // Optionally add an opacity lvl to the image
+    backgroundImageOpacity: 0.5,
+    // should the image be resized to fit the container?
+    backgroundImageStretch: false
+});
+
+   
+document.getElementById('imgLoader').onchange = function handleImage(e) {
+    var reader = new FileReader();
+    reader.onload = function (event) { console.log('fdsf');
+        var imgObj = new Image();
+        imgObj.src = event.target.result;
+        imgObj.onload = function () {
+            // start fabricJS stuff
+            
+            var image = new fabric.Image(imgObj);
+            image.set({
+                left: 250,
+                top: 250,
+                angle: 20,
+                padding: 10,
+                cornersize: 10
+            });
+            //image.scale(getRandomNum(0.1, 0.25)).setCoords();
+            canvas.add(image);
+            
+            // end fabricJS stuff
+        }
+        
+    }
+    reader.readAsDataURL(e.target.files[0]);
+}
+</script>
+  
+  
+
+	
+	
+  </body>
+</html>      
